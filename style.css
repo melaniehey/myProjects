@@ -1,0 +1,54 @@
+.flex-container {
+    /* We first create a flex layout context */
+    display: flex;
+    
+    /* Then we define the flow direction 
+       and if we allow the items to wrap 
+     * Remember this is the same as:
+     * flex-direction: row;
+     * flex-wrap: wrap;
+     */
+    flex-direction: row;
+    
+    /* Then we define how is distributed the remaining space */
+    /* justify-content: space-around;
+    
+    padding: 0; */
+    margin: 0;
+    list-style: none;
+    align-items: center;
+  }
+  
+  .flex-item {
+    background: tomato;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    line-height: 150px;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+  }
+
+  #playArea {
+    width: 800px;
+    height: 500px;
+  }
+
+  #row1, #row2 {
+    border-style: none solid none none;
+  }
+
+  .border {
+    border-style: none none solid none;
+  }
+
+#gameBox1, #gameBox2, #gameBox3 {
+  background-color: rgba(255, 99, 71, 0.774);
+  border-radius: 30px;
+  padding: 20px 60px 20px 60px;
+}
+
+#infoArea {
+  padding-left: 300px;
+}
