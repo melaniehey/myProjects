@@ -41,6 +41,10 @@
     background: blue;   
 }
 
+.dont-flip {
+    pointer-events: none;
+}
+
 .cardFace {
     position: absolute;
     width: 100%;
