@@ -6,7 +6,6 @@ window.addEventListener('load', function () {
     let victory = false;
     let myScore = 0;
     let pcScore = 0;
-    // document.getElementById('playAgainBtn').style.display = 'none';
     document.getElementById('gameBox1').style.display = 'none';
     document.getElementById('gameBox2').style.display = 'none';
     document.getElementById('gameBox3').style.display = 'none';
@@ -79,7 +78,7 @@ window.addEventListener('load', function () {
                 tilesCounter += 1;
             }
         }
-        for (let i = 0; i < winRow.length; i++) {
+        for (let i = 0; i < winRow.length; i++) {        
             if (tiles[winRow[0]].classList.contains('myTiles') && tiles[winRow[1]].classList.contains('myTiles') && tiles[winRow[2]].classList.contains('myTiles')) {
                 console.log('you won');
                 victory = true;
@@ -103,22 +102,4 @@ window.addEventListener('load', function () {
     //     myScore += 1;
     //     console.log("Dein score ist " + myScore);
     // }
-
-    //Play Again: Option 1 (funktioniert nach 1, 2 Mal Button clicken nicht richtig)
-    // document.getElementById('playAgainBtn').addEventListener("click", function () {
-    //     victory = false;
-    //     clicked = false;
-    //     for (let i = 0; i < tiles.length; i++) {
-    //         tiles[i].innerHTML = '';
-    //         tiles[i].classList.remove('pcTiles');
-    //         tiles[i].classList.remove('myTiles');
-    //     }
-    //     whoBegins();
-    // });
-
-    //Play Again: Option 2
-    //On click page reload
-
-
-
 });

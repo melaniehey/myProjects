@@ -3,12 +3,13 @@ window.addEventListener('load', function () {
     let cards = [...document.querySelectorAll('.card')];
     let clicked = false;
     let firstCardClicked = false;
-
+    let secondCardClicked = false;
+    let clickedCards = 0;
 
     clickFunction();
+    pickFirstOfPair();
 
     function clickFunction() {
-        let clickedCards = 0;
         cards.forEach((card) => {
             card.addEventListener('click', function () {
                 card.classList.toggle('is-flipped');
@@ -16,22 +17,17 @@ window.addEventListener('load', function () {
                 clicked = true;
                 clickedCards += 1;
                 if (clickedCards === 2) {
-                    autoFlipBack()
-                    
-                    console.log('des');
-                } else {
-                    // clickFunction();
-                    console.log('wer');
+                    firstCardClicked = true;
+                    secondCardClicked = true;
+                    clickedCards = 0;
+                    autoFlipBack();
+                    clickOnlyTwo();
                 }
             });
         });
     }
 
-
-
-
     function autoFlipBack() {
-        // cards.classList.remove('dont-flip');
         if (clicked = true) {
             for (let i = 0; i < cards.length; i++) {
                 if (cards[i].classList.contains('is-flipped')) {
@@ -45,24 +41,62 @@ window.addEventListener('load', function () {
         for (let i = 0; i < cards.length; i++) {
             if (cards[i].classList.contains('is-flipped')) {
                 cards[i].classList.toggle('is-flipped');
+                cards[i].classList.remove('dont-flip');
             }
         }
     }
 
-    //Maximal nur zwei anklickbar
-
-
-
-
-
-
-
-
-
-
-
+    //Maximal zwei anklickbar
+    function clickOnlyTwo() {
+        let divs = [...document.querySelectorAll("div > div:not(.is-flipped)")];
+        if (firstCardClicked && secondCardClicked) {
+            for (let i = 0; i < divs.length; i++) {
+                divs[i].classList.add('dont-flip');
+                setTimeout(function () {
+                    divs[i].classList.remove('dont-flip');
+                }, 2000);
+            }
+        }
+    }
 
     //Building Pairs
+    //javascript give two random elements the same class name
+    // function getMultipleRandom(cards, num) {
+    //     const shuffled = [...cards].sort(() => 0.5 - Math.random());
+
+    //     return shuffled.slice(0, num);
+    // }
+    // console.log(getMultipleRandom(cards, 2));
+
+
+
+
+
+    //1. get one random array index in array CARDS
+    //0-11
+    //2. give it the new Classname FIRSTPAIR
+    function pickFirstOfPair() {
+        for (let i = 0; i < cards.length; i++) {
+            // console.log(cards[i]);
+            // let firstOfPair = (Math.floor(Math.random() * 6));
+
+            cards[i].classList.add(Math.floor(Math.random() * 6));
+            console.log(cards[i]);
+
+        }
+        // let firstOfPair = Math.floor(Math.random() * cards.length);
+        // firstOfPair.classList.add('first-of-pair');
+        // console.log(firstOfPair);
+        // let secondOfPair = [(Math.floor(Math.random() * cards.length))];
+        // if (secondOfPair.classList.contains('first-of-pair')) {
+        //     console.log('secondOfPair.classList.contains(first-of-pair)');
+        // } else {
+        //     console.log('does not contain first-of-pair');
+        // }
+    }
+    //3. Pick another randome index 
+    //4. check if it is same as FIRSTPAIR bzw. already has teh classname
+
 
     // var arr1 = cards.slice(),
     //     arr2 = cards.slice(); 
@@ -154,7 +188,4 @@ window.addEventListener('load', function () {
             return valString;
         }
     }
-
-
-
 })
