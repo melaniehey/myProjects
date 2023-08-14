@@ -7,7 +7,8 @@ window.addEventListener('load', function () {
     let clickedCards = 0;
 
     clickFunction();
-    pickFirstOfPair();
+    // pickFirstOfPair();
+    buildingPairs();
 
     function clickFunction() {
         cards.forEach((card) => {
@@ -59,114 +60,38 @@ window.addEventListener('load', function () {
         }
     }
 
-    //Building Pairs
-    //javascript give two random elements the same class name
-    // function getMultipleRandom(cards, num) {
-    //     const shuffled = [...cards].sort(() => 0.5 - Math.random());
+    function buildingPairs() {
+        for (let i = 0; i < 6; i++) {
+            let firstInPair = Math.floor(Math.random() * 6);
+            if (cards[firstInPair].classList.contains('inPair')) {
+                //dann brauchen wir eine neue firstInPair oder?
+                console.log('ToDo: neue firstInPair');
+            } else {
+                cards[firstInPair].classList.add('inPair');
+                console.log(cards[firstInPair]);
+            }
 
-    //     return shuffled.slice(0, num);
-    // }
-    // console.log(getMultipleRandom(cards, 2));
+
+            let secondInPair = Math.floor(Math.random() * cards.length);
+            if (cards[secondInPair].classList.contains('inPair')) {
+                console.log('ToDo: neumachen 2');
+            } else {
+                cards[secondInPair].classList.add('inPair');
+                console.log(cards[secondInPair]);
+            }
+
+            if (firstInPair == secondInPair) {
+                buildingPairs();
+                console.log('aksdsbfhsjakaskmjnbmkd');
+            } else {
+                console.log('else');
+            }
 
 
-
-
-
-    //1. get one random array index in array CARDS
-    //0-11
-    //2. give it the new Classname FIRSTPAIR
-    function pickFirstOfPair() {
-        for (let i = 0; i < cards.length; i++) {
-            // console.log(cards[i]);
-            // let firstOfPair = (Math.floor(Math.random() * 6));
-
-            cards[i].classList.add(Math.floor(Math.random() * 6));
-            console.log(cards[i]);
-
+            // let pair = [firstInPair, secondInPair]
+            // console.log(pair);
         }
-        // let firstOfPair = Math.floor(Math.random() * cards.length);
-        // firstOfPair.classList.add('first-of-pair');
-        // console.log(firstOfPair);
-        // let secondOfPair = [(Math.floor(Math.random() * cards.length))];
-        // if (secondOfPair.classList.contains('first-of-pair')) {
-        //     console.log('secondOfPair.classList.contains(first-of-pair)');
-        // } else {
-        //     console.log('does not contain first-of-pair');
-        // }
     }
-    //3. Pick another randome index 
-    //4. check if it is same as FIRSTPAIR bzw. already has teh classname
-
-
-    // var arr1 = cards.slice(),
-    //     arr2 = cards.slice(); 
-
-    // var arr1 = Array.from(cards).slice(),
-    //     arr2 = Array.from(cards).slice();
-
-    //var arr1 = cards.slice(), // copy array
-    //    arr2 = cards.slice(); // copy array again
-
-    //arr1.sort(function () { return 0.5 - Math.random(); }); // shuffle arrays
-    //arr2.sort(function () { return 0.5 - Math.random(); });
-
-    //while (arr1.length) {
-    //  var firstOfPair = arr1.pop(), // get the last value of arr1
-    //     secondOfPair = arr2[0] == firstOfPair ? arr2.pop() : arr2.shift();
-    //        ^^ if the first value is the same as firstOfPair, 
-    //           get the last value, otherwise get the first
-
-    //   console.log(firstOfPair + ' gets ' + secondOfPair);
-    //}
-
-
-    // numberPairsGenerator();    
-
-    // function numberPairsGenerator() {
-    //     let pairNumber = Math.floor((Math.random() * 6)); /* 0-5 */
-    //     if (pairNumber < 9) {
-    //         console.log(pairNumber);
-    //     }
-    // }
-    // getTwoRandomeCards();
-
-    // function getTwoRandomeCards(cards, num) {
-    //     let shuffled = [...cards].sort(() => 0.5 - Math.random());
-    //     console.log(shuffled);
-
-    //     return shuffled.slice(0, num);
-    // }
-
-    // console.log(getTwoRandomeCards(cards, 2));
-    // console.log(getTwoRandomeCards(cards, 2));
-
-
-    // function GET First OF PAIR
-    // function buildPairs(array) {
-    //     const pairs = [];
-    //     const indexes = [...cards].sort(() => 0.5 - Math.random());
-    //     clicked == true;
-    //     if (clicked == true) {
-    //         for (let i = 0; i < indexes.length; i++) {
-    //             firstOfPair = indexes[i];
-    //             console.log(firstOfPair);
-    //             getSecondOfPair();
-    //         }
-    //     } else {
-    //         console.log('nicht true, nicht clicked');
-    //     }
-    // }
-
-    // function getSecondOfPair() {
-    //     const indexes = [...cards].sort(() => 0.5 - Math.random());
-    //     for (let i = 0; i < indexes.length; i++) {
-    //         if (!indexes[i] == firstOfPair) {
-    //             console.log('a');
-    //         } else {
-    //             console.log('b');
-    //         }
-    //     }
-    // }
 
     // Timer 
     var minutesLabel = document.getElementById("minutes");
