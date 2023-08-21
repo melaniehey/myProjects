@@ -6,7 +6,6 @@ window.addEventListener('load', function () {
     let victory = false;
     let myScore = 0;
     let pcScore = 0;
-    let tilesCounter = 0;
     document.getElementById('gameBox1').style.display = 'none';
     document.getElementById('gameBox2').style.display = 'none';
     document.getElementById('gameBox3').style.display = 'none';
@@ -54,7 +53,6 @@ window.addEventListener('load', function () {
             pcTurn();
         }
     };
-    
 
     function whoWon() {
         const winRow1 = [0, 1, 2];
@@ -72,37 +70,40 @@ window.addEventListener('load', function () {
             }
 
         }
-        if (tilesCounter == 9 && victory == false) {
-            console.log('draw');
-            document.getElementById('gameBox3').style.display = '';
-        }
+        // if (tilesCounter == 9 && victory == false) {
+        //     console.log('draw');
+        //     document.getElementById('gameBox3').style.display = '';
+        // }
     }
 
     function whichLetter(winRow) {
+        let tilesCounter = 0;
         for (let i = 0; i < tiles.length; i++) {
             if (tiles[i].classList.contains('myTiles') || tiles[i].classList.contains('pcTiles')) {
                 tilesCounter += 1;
             }
         }
-        for (let i = 0; i < winRow.length; i++) {        
+        for (let i = 0; i < winRow.length; i++) {
             if (tiles[winRow[0]].classList.contains('myTiles') && tiles[winRow[1]].classList.contains('myTiles') && tiles[winRow[2]].classList.contains('myTiles')) {
                 console.log('you won');
                 victory = true;
                 // myScore += 1;
                 // scores(myScore);
                 document.getElementById('gameBox1').style.display = '';
-                break;
+                break;     
             } else if (tiles[winRow[0]].classList.contains('pcTiles') && tiles[winRow[1]].classList.contains('pcTiles') && tiles[winRow[2]].classList.contains('pcTiles')) {
                 console.log('you lose');
                 victory = true;
                 document.getElementById('gameBox2').style.display = '';
                 break;
+            } else if (tilesCounter == 9 && victory == false) {
+                console.log('draw');
+                document.getElementById('gameBox3').style.display = '';
             } else {
                 console.log('go on');
                 break;
             }
         }
-        
     }
 
     // function scores() {
